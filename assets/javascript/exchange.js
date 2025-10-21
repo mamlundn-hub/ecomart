@@ -71,7 +71,7 @@ function showT(curArray) {
                     ${curArray[i].desc}
                 </p>
                 <p><span>Điểm: </span>${curArray[i].point}</p>
-                <button>Đổi ngay</button>
+                <button onClick="exchangeItem(${curArray[i].id})">Đổi ngay</button>
             </div>
             <img src="${curArray[i].src}" alt="" />
         </div>
@@ -87,6 +87,11 @@ function setItem() {
     if (x > 0) count += parseInt(x);
   }
   document.getElementById("exchange_sp").innerHTML = count;
+}
+
+function exchangeItem(id) {
+  var x = treeArray.find((item) => item.id === id);
+  alert("Đã đổi sản phẩm "+x.name+" thành công!");
 }
 
 setItem();
