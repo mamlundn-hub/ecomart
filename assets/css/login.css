@@ -1,0 +1,522 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #3bae8b;
+  --secondary-color: #229245;
+  --text-dark: #333;
+  --text-light: #666;
+  --white: #ffffff;
+}
+
+body {
+  font-family: "Mulish", "Poppins", Arial, Helvetica, sans-serif;
+  height: 100vh;
+  background: linear-gradient(135deg, 
+    var(--primary-color) 0%, 
+    var(--secondary-color) 50%, 
+    #1e7e5f 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(59, 174, 139, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(34, 146, 69, 0.2) 0%, transparent 50%);
+  z-index: -1;
+}
+
+body::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('../img/bgLogin.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.1;
+  z-index: -2;
+}
+/* ------------------------- Back to home button --------------------- */
+#backhome {
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.3s ease;
+  position: fixed;
+  top: 30px;
+  left: 36px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(59, 174, 139, 0.2);
+  border-radius: 50px;
+  width: 55px;
+  box-shadow: 0 8px 32px rgba(59, 174, 139, 0.15);
+  height: 55px;
+}
+
+#backhome:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 40px rgba(59, 174, 139, 0.25);
+  border-color: var(--primary-color);
+}
+
+.return-button {
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.return-button:hover {
+  color: var(--secondary-color);
+}
+
+.return-button i {
+  font-size: 1.8rem;
+  padding: 12px 16px;
+}
+
+/* ----------------------------Login Modal--------------------------- */
+.modal {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(59, 174, 139, 0.1) 0%, 
+    rgba(34, 146, 69, 0.05) 100%
+  );
+  backdrop-filter: blur(15px) saturate(150%);
+  z-index: 1000;
+  display: none;
+  animation: fadeIn ease-out 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.modal.open {
+  display: block;
+}
+
+.container {
+  position: absolute;
+  max-width: 430px;
+  width: 100%;
+  border-radius: 24px;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(248, 252, 250, 0.9) 100%
+  );
+  backdrop-filter: blur(25px) saturate(180%);
+  border: 2px solid rgba(59, 174, 139, 0.15);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.1),
+    0 15px 35px rgba(59, 174, 139, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: slideUp 0.4s ease-out;
+  position: relative;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(59, 174, 139, 0.02) 0%, 
+    transparent 50%,
+    rgba(34, 146, 69, 0.02) 100%
+  );
+  pointer-events: none;
+}
+.container .forms {
+  display: flex;
+  align-items: center;
+  height: 440px;
+  width: 200%;
+  transition: height 0.3s ease;
+}
+
+.container .form {
+  width: 50%;
+  padding: 40px;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(248, 252, 250, 0.7) 100%
+  );
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.container .form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(59, 174, 139, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+.container.active .login {
+  margin-left: -50%;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.container .signup {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.container.active .signup {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.container.active .forms {
+  height: 600px;
+}
+.container .form .title {
+  position: relative;
+  font-size: 28px;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, 
+    var(--text-dark) 0%, 
+    var(--primary-color) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form .title::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  height: 3px;
+  width: 60px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 25px;
+  box-shadow: 0 2px 8px rgba(59, 174, 139, 0.2);
+}
+.form .input-field {
+  position: relative;
+  height: 55px;
+  width: 100%;
+  margin-top: 25px;
+}
+
+.input-field input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 0 45px;
+  border: 2px solid rgba(59, 174, 139, 0.2);
+  border-radius: 16px;
+  outline: none;
+  font-size: 16px;
+  font-family: "Mulish", sans-serif;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.input-field input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(59, 174, 139, 0.15);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.input-field input:valid {
+  border-color: var(--primary-color);
+}
+.input-field i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-light);
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.input-field input:is(:focus, :valid) ~ i {
+  color: var(--primary-color);
+}
+
+.input-field i.icon {
+  left: 15px;
+}
+
+.input-field i.showHidePw {
+  right: 15px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.input-field i.showHidePw:hover {
+  background: rgba(59, 174, 139, 0.1);
+}
+.form .checkbox-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.checkbox-text .checkbox-content {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-content input {
+  margin-right: 12px;
+  accent-color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+.form .text {
+  color: var(--text-dark);
+  font-size: 14px;
+  font-family: "Mulish", sans-serif;
+}
+
+.form a.text {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.form a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+.form .button {
+  margin-top: 40px;
+}
+
+.form .button input {
+  width: 100%;
+  height: 50px;
+  border: none;
+  color: var(--white);
+  font-size: 17px;
+  font-weight: 600;
+  font-family: "Mulish", sans-serif;
+  letter-spacing: 1px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(59, 174, 139, 0.3);
+}
+
+.button input:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(59, 174, 139, 0.4);
+  background: linear-gradient(135deg, var(--secondary-color), #1e7e5f);
+}
+
+.button input:active {
+  transform: translateY(0);
+}
+
+.form .login-signup {
+  margin-top: 30px;
+  text-align: center;
+  font-family: "Mulish", sans-serif;
+}
+
+.form .login-signup .text {
+  margin-bottom: 8px;
+}
+
+.form .login-signup a {
+  font-weight: 600;
+  position: relative;
+}
+
+.form .login-signup a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  transition: width 0.3s ease;
+}
+
+.form .login-signup a:hover::after {
+  width: 100%;
+}
+
+/* Enhanced input placeholder styling */
+.input-field input::placeholder {
+  color: var(--text-light);
+  font-style: italic;
+}
+
+/* Form validation feedback */
+.input-field input:invalid:not(:placeholder-shown) {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+/* Loading state for button */
+.button input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Container hover effect */
+.container:hover {
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.15),
+    0 20px 40px rgba(59, 174, 139, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Mobile responsive adjustments */
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 350px;
+    width: 95%;
+    margin: 0 20px;
+    border-radius: 20px;
+  }
+  
+  .container .form {
+    padding: 30px 25px;
+  }
+  
+  .container .form .title {
+    font-size: 24px;
+  }
+  
+  .form .input-field {
+    height: 50px;
+    margin-top: 20px;
+  }
+  
+  .input-field input {
+    padding: 0 40px;
+    font-size: 15px;
+    border-radius: 14px;
+  }
+  
+  .input-field i.icon {
+    left: 12px;
+  }
+  
+  .input-field i.showHidePw {
+    right: 12px;
+  }
+  
+  #backhome {
+    top: 20px;
+    left: 20px;
+  }
+  
+  .return-button i {
+    font-size: 1.6rem;
+    padding: 10px 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    max-width: 320px;
+    border-radius: 18px;
+  }
+  
+  .container .form .title {
+    font-size: 22px;
+  }
+  
+  .form .input-field {
+    height: 48px;
+  }
+  
+  .input-field input {
+    padding: 0 35px;
+    font-size: 14px;
+    border-radius: 12px;
+  }
+
+  .form .button input {
+    border-radius: 14px;
+  }
+}
+
+/* Smooth focus transitions */
+.input-field input:focus {
+  animation: focusGlow 0.3s ease-out;
+}
+
+@keyframes focusGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 174, 139, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 3px rgba(59, 174, 139, 0.15);
+  }
+}
