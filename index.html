@@ -1120,3 +1120,85 @@
     <script src="assets/javascript/navbar.js"></script>
   </body>
 </html>
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoMart - Hành động xanh</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/logo.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/exchange.css" />
+  </head>
+
+  <body id="top">
+    <div class="loader"></div>
+    <div id="main" class="grid wide">
+      <!-- Header -->
+      <header id="header__responsive">
+        <div class="header__responsive-img">
+          <img src="assets/img/logo.png" alt="" />
+          <span>EcoMart</span>
+        </div>
+        <nav>
+          <a href="#exchange__tree"><i class="fa-solid fa-tree"></i> Tích điểm đổi cây</a>
+          <a href="#dictionary"><i class="fa-solid fa-book"></i> Từ điển Xanh</a>
+          <a href="#green-actions"><i class="fa-solid fa-seedling"></i> Hành động Xanh</a>
+        </nav>
+      </header>
+
+      <!-- Giới thiệu -->
+      <section id="intro">
+        <h1>🌱 Chào mừng đến với EcoMart!</h1>
+        <p>
+          Nền tảng giúp học sinh vừa học, vừa hành động vì môi trường — tích điểm để đổi cây xanh và lan tỏa ý thức bảo vệ Trái đất 🌍
+        </p>
+      </section>
+
+      <!-- Phần đổi cây -->
+      <section id="exchange__tree">
+        <h2>🌿 Tích điểm đổi cây trồng</h2>
+        <p>Mỗi điểm bạn tích lũy là một mầm xanh cho tương lai.</p>
+        <div class="tree-list" id="treeList"></div>
+      </section>
+
+      <!-- Từ điển xanh -->
+      <section id="dictionary">
+        <h2>📗 Từ điển Xanh</h2>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="🔍 Nhập tên cây hoặc thuật ngữ..."
+        />
+        <div id="dictionaryList"></div>
+      </section>
+
+      <!-- Hành động xanh -->
+      <section id="green-actions">
+        <h2>💪 Hành động Xanh của bạn</h2>
+        <form id="actionForm">
+          <input type="text" id="userName" placeholder="Tên của bạn" required />
+          <textarea
+            id="userAction"
+            placeholder="Hôm nay bạn đã làm gì cho môi trường?"
+            required
+          ></textarea>
+          <button type="submit">Đăng bài 🌱</button>
+        </form>
+        <div id="actionsList"></div>
+      </section>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <p>
+          © 2025 EcoMart | Hành động nhỏ - Thay đổi lớn 💚
+        </p>
+      </footer>
+    </div>
+
+    <script src="assets/javascript/exchange.js"></script>
+  </body>
+</html>
